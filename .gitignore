@@ -1,0 +1,42 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local license and user data
+licenses.json
+active_license.json
+
+# Build outputs
+build/
+dist/
+*.spec
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.old
+
+# IDE settings
+.vscode/
+.idea/
+
+# Test and coverage files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Downloaded media
+downloads/
+Downloaded/
