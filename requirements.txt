@@ -1,0 +1,4 @@
+PySide6>=6.6
+requests>=2.31
+yt-dlp>=2025.1.15
+pyinstaller>=6.0
