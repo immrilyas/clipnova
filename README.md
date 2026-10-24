@@ -1,132 +1,147 @@
-# ClipNova — Video Downloader for Windows
+# ClipNova — Python Video Downloader for Windows
 
-**ClipNova is a Python-based media downloader designed to make downloading and managing supported online media easier through a desktop application.**
+**ClipNova** is a Windows video downloader application built with Python, PySide6, and yt-dlp. It is being developed to provide a desktop interface for managing supported media downloads, download queues, and video quality options.
 
-ClipNova uses Python, PySide6, and yt-dlp to provide a graphical interface for supported media-download workflows.
+Explore the source code, development progress, and setup instructions for this Python desktop application.
 
-> **Project status:** Under development. Features, supported platforms, and installation requirements are subject to testing.
+> **Project status:** Under development. Features, installation steps, and platform compatibility should be verified against the current source code before release.
 
-## Features
+## Key Features
 
-- Windows desktop application with a graphical user interface
-- Video and audio format selection, where supported
-- Download queue and download status management
-- Download progress tracking
-- Pause, resume, and stop controls, subject to implementation and extractor support
-- Download folder management
-- Media processing support through FFmpeg, where required
-- Support for compatible media sources through yt-dlp
-- License management integration, subject to server configuration
+- **Desktop interface:** A graphical Windows application built with PySide6.
+- **Media downloads:** Uses yt-dlp to process supported media URLs.
+- **Multiple platforms:** Designed to support compatible URLs from YouTube, Facebook, TikTok, and Instagram, subject to platform restrictions and current extractor support.
+- **Download queue:** Organize supported download tasks in the application.
+- **Quality options:** Provides configured media quality and audio download options where supported.
+- **Download management:** Includes download controls and history features where implemented in the current version.
+- **Python source code:** A codebase for developers interested in Python desktop applications and media-download tools.
+
+Feature availability may change during development.
 
 ## Technology Stack
 
-- Python
-- PySide6 and Qt for the desktop interface
-- yt-dlp for media extraction
-- FFmpeg for supported media-processing tasks
-- FastAPI for the separate license-server component
+- **Python** — application programming language
+- **PySide6** — desktop graphical user interface
+- **yt-dlp** — supported media extraction and download engine
+- **FFmpeg** — media processing and audio/video conversion when required
+- **PyInstaller** — packaging Python applications for distribution
+- **Requests** — HTTP requests where used by the application
+
+## System Requirements
+
+- Windows 10 or Windows 11
+- A compatible Python version
+- Git, if cloning the repository
+- An internet connection for supported online downloads
+- FFmpeg when required by the selected media format or processing feature
+
+Check the project files for the currently tested Python version and dependencies.
 
 ## Installation Guide
 
-### Requirements
+### 1. Clone the Repository
 
-Before installing ClipNova, make sure you have:
+Open PowerShell or Command Prompt and run:
 
-- A compatible Windows computer
-- A supported Python version
-- Git, if you want to clone the repository
-- FFmpeg, if required by the selected download formats
-
-### Step 1: Download the source code
-
-Clone the repository or download the source code from GitHub.
-
-```powershell
+```bash
 git clone https://github.com/immrilyas/clipnova.git
 cd clipnova
 ```
 
-### Step 2: Create a virtual environment
+### 2. Create a Virtual Environment
 
-```powershell
+```bash
 py -m venv .venv
 ```
 
-### Step 3: Activate the environment
+### 3. Activate the Environment
+
+For PowerShell:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-If PowerShell activation is blocked, use Command Prompt:
+For Command Prompt:
 
 ```bat
 .venv\Scripts\activate.bat
 ```
 
-### Step 4: Install dependencies
+### 4. Install Dependencies
 
-```powershell
+```bash
 python -m pip install --upgrade pip
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
-### Step 5: Run ClipNova
+### 5. Run ClipNova
 
-```powershell
+If `app.py` is the application's current entry point, run:
+
+```bash
 python app.py
 ```
 
-These instructions will be finalized after the repository's dependency list and application entry point have been verified.
+These instructions must be checked against the latest repository files before being used for a public release.
 
 ## FFmpeg Setup
 
-Some media formats and merging operations require FFmpeg. Install a compatible FFmpeg build and make sure its executable is discoverable by ClipNova.
+Some media formats and audio/video processing operations require FFmpeg.
 
-## License Management
-
-ClipNova's licensing functionality may require a separately configured license server. Server URLs, administrator credentials, private keys, and other secrets must never be published in the source repository.
+Install FFmpeg using a trusted source, ensure the required executable is accessible to ClipNova, and follow the setup instructions appropriate for your Windows environment.
 
 ## Troubleshooting
 
-**Python is not recognized**
+**Dependency installation fails**
 
-Install Python and verify that the Python launcher or executable is available.
+Confirm that the virtual environment is activated, then run:
 
-**Dependencies cannot be installed**
+```bash
+python -m pip check
+```
 
-Activate the project's virtual environment and check that `requirements.txt` contains the required packages.
+**Python cannot find a required module**
 
-**A media URL fails**
+Install the project's dependencies inside the active virtual environment:
 
-The source website may have changed, may require authentication, or may not be supported by the installed yt-dlp version.
+```bash
+python -m pip install -r requirements.txt
+```
+
+**A media URL cannot be downloaded**
+
+The URL may be unsupported, private, unavailable, region-restricted, or affected by a change in the source platform. Check the current yt-dlp version and use only content you are authorized to access.
 
 **FFmpeg is not detected**
 
-Check the FFmpeg installation and verify that ClipNova can locate its executable.
+Check that FFmpeg is installed and accessible to the application.
+
+## Development
+
+ClipNova is an evolving Python desktop application. Contributions, bug reports, and suggestions can help improve its reliability, usability, and documentation.
+
+Before submitting a change:
+
+1. Test the affected functionality.
+2. Keep credentials, private configuration, and local license data out of Git.
+3. Update documentation when setup instructions or features change.
+4. Avoid claiming compatibility with platforms or features that have not been tested.
 
 ## Responsible Use
 
-Download only content you own, have permission to download, or are legally entitled to access. Respect copyright, privacy, and the applicable terms of third-party services.
+Use ClipNova only for content you own or are authorized to download. Follow the terms of service of the relevant platforms, applicable copyright laws, and local regulations.
 
-ClipNova does not promise compatibility with every website and does not authorize bypassing DRM or other access restrictions.
+ClipNova is an independent project and is not affiliated with or endorsed by YouTube, Facebook, TikTok, or Instagram.
 
-## Contributing
+## License
 
-Bug reports, feature suggestions, and constructive contributions are welcome. Please provide clear reproduction steps when reporting an issue.
+A public software license has not yet been specified. Until a license is added to the repository, do not assume that the source code is available for unrestricted reuse, modification, or redistribution.
 
-## Security
+## Project
 
-Do not submit API keys, passwords, license-server credentials, private user data, or production configuration files to the repository.
+**Repository:** https://github.com/immrilyas/clipnova
 
-## Project License
+**Developer:** [@immrilyas](https://github.com/immrilyas)
 
-No open-source license has been selected in this repository yet. Until a license is added, do not assume that the code is available for unrestricted reuse or redistribution.
-
-## Disclaimer
-
-ClipNova is an independent project and is not affiliated with or endorsed by YouTube, Facebook, Instagram, TikTok, or other third-party services.
-
----
-
-**ClipNova — Built with Python for media-download workflows.**
+For bug reports and feature suggestions, use the repository's GitHub Issues section when it is enabled.
