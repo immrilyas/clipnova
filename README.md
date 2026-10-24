@@ -1,32 +1,132 @@
-# ClipNova — Windows Desktop App
+# ClipNova — Video Downloader for Windows
 
-ClipNova is a PySide6 desktop downloader for supported Facebook and TikTok URLs, powered by yt-dlp.
+**ClipNova is a Python-based media downloader designed to make downloading and managing supported online media easier through a desktop application.**
 
-## What's included in this update
-- Orange/amber accent theme replacing the previous purple/blue accent palette.
-- A subtle fade-in when the app opens.
-- Pricing cards that clearly describe Free, Monthly Starter, Monthly Premium, Lifetime Starter Plus, and Lifetime Ultra Pro quotas.
-- EULA, Privacy Policy, Terms & Conditions drafts.
-- `ClipNova_Setup.iss` for building a Windows installer with Inno Setup 6.
-- Existing logo, icon, downloader, and online license activation files retained.
+ClipNova uses Python, PySide6, and yt-dlp to provide a graphical interface for supported media-download workflows.
 
-## Build the app on Windows
-1. Install Python 3.11 or 3.12 (64-bit recommended).
-2. Open this folder in a terminal and run `py -3 -m pip install -r requirements.txt` (or use your existing `.venv`).
-3. Run `build_exe.bat`. PyInstaller output should be in `dist\ClipNova\`.
-4. Install Inno Setup 6, open `ClipNova_Setup.iss`, and compile it.
-5. Installer output should be in `installer_output\ClipNova_Setup_1.1.0.exe`.
+> **Project status:** Under development. Features, supported platforms, and installation requirements are subject to testing.
 
-## Important release status
-The quota text in the UI documents the intended policy; it is not itself a secure quota enforcement system. Server-side quota tracking, atomic reservation/completion counting, and verified rewarded-ad callbacks still need to be implemented and deployed on the license server before publishing these limits as technically enforced. No real ad provider is configured in this package. Do not claim rewarded ads work until provider integration and verification are tested.
+## Features
 
-The legal documents are draft templates, not legal advice. Review them against the actual data flows and local law before commercial distribution. Verify payment details before release. Do not distribute `.env` files, databases, virtual environments, or server secrets with the desktop app.
+- Windows desktop application with a graphical user interface
+- Video and audio format selection, where supported
+- Download queue and download status management
+- Download progress tracking
+- Pause, resume, and stop controls, subject to implementation and extractor support
+- Download folder management
+- Media processing support through FFmpeg, where required
+- Support for compatible media sources through yt-dlp
+- License management integration, subject to server configuration
 
-## Plan policy currently shown
-- Free: 100 downloads/day; ads intended; each verified completed rewarded ad should unlock 1 extra download after the daily quota.
-- Monthly Starter: 300/day and 15,000/month; no ads.
-- Monthly Premium: 800/day and 40,000/month; no ads.
-- Lifetime Starter Plus: 1,000/day and 80,000 lifetime; no ads.
-- Lifetime Ultra Pro: unlimited daily and lifetime downloads; no ads.
+## Technology Stack
 
-For technical limits, platform availability, and permitted use, consult the Terms and Conditions in the app and `Terms_and_Conditions.txt`.
+- Python
+- PySide6 and Qt for the desktop interface
+- yt-dlp for media extraction
+- FFmpeg for supported media-processing tasks
+- FastAPI for the separate license-server component
+
+## Installation Guide
+
+### Requirements
+
+Before installing ClipNova, make sure you have:
+
+- A compatible Windows computer
+- A supported Python version
+- Git, if you want to clone the repository
+- FFmpeg, if required by the selected download formats
+
+### Step 1: Download the source code
+
+Clone the repository or download the source code from GitHub.
+
+```powershell
+git clone https://github.com/immrilyas/clipnova.git
+cd clipnova
+```
+
+### Step 2: Create a virtual environment
+
+```powershell
+py -m venv .venv
+```
+
+### Step 3: Activate the environment
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+If PowerShell activation is blocked, use Command Prompt:
+
+```bat
+.venv\Scripts\activate.bat
+```
+
+### Step 4: Install dependencies
+
+```powershell
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### Step 5: Run ClipNova
+
+```powershell
+python app.py
+```
+
+These instructions will be finalized after the repository's dependency list and application entry point have been verified.
+
+## FFmpeg Setup
+
+Some media formats and merging operations require FFmpeg. Install a compatible FFmpeg build and make sure its executable is discoverable by ClipNova.
+
+## License Management
+
+ClipNova's licensing functionality may require a separately configured license server. Server URLs, administrator credentials, private keys, and other secrets must never be published in the source repository.
+
+## Troubleshooting
+
+**Python is not recognized**
+
+Install Python and verify that the Python launcher or executable is available.
+
+**Dependencies cannot be installed**
+
+Activate the project's virtual environment and check that `requirements.txt` contains the required packages.
+
+**A media URL fails**
+
+The source website may have changed, may require authentication, or may not be supported by the installed yt-dlp version.
+
+**FFmpeg is not detected**
+
+Check the FFmpeg installation and verify that ClipNova can locate its executable.
+
+## Responsible Use
+
+Download only content you own, have permission to download, or are legally entitled to access. Respect copyright, privacy, and the applicable terms of third-party services.
+
+ClipNova does not promise compatibility with every website and does not authorize bypassing DRM or other access restrictions.
+
+## Contributing
+
+Bug reports, feature suggestions, and constructive contributions are welcome. Please provide clear reproduction steps when reporting an issue.
+
+## Security
+
+Do not submit API keys, passwords, license-server credentials, private user data, or production configuration files to the repository.
+
+## Project License
+
+No open-source license has been selected in this repository yet. Until a license is added, do not assume that the code is available for unrestricted reuse or redistribution.
+
+## Disclaimer
+
+ClipNova is an independent project and is not affiliated with or endorsed by YouTube, Facebook, Instagram, TikTok, or other third-party services.
+
+---
+
+**ClipNova — Built with Python for media-download workflows.**
